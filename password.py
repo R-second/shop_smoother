@@ -8,11 +8,10 @@ import databaseMethod
 
 
 # 売店側でshop.dbからパスワードをとってきて復号化
-def decryptPassword(id):
+def decryptPassword(cipher_data):
     secret_key = '_KOSEN___shop___smoother'   # secret_keyは暗号化メソッドと共通
     crypto = AES.new(secret_key)       # secret_keyを元にしたクラスの生成
-    cipher_data = databaseMethod.getDBInfo("reservation", "password", id)   # getDBInfoメソッドを使ってidのパスワード(暗号化済み)を取得
-    original_password = crypto.decrypt(cipher_data[0][0])    # 復号化
+    original_password = crypto.decrypt(cipher_data)    # 復号化
     return original_password 
 
 # 学生側でパスワードを暗号化

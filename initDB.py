@@ -1,22 +1,31 @@
 
 # databaseのセットアップ用
 # 最初に動かす
+#####メモ：mysql -u root -p shopdb
 
-import sqlite3
 
-conn = sqlite3.connect("shop.db")
+import mysql.connector
+connect = mysql.connector.connect(
+        host='localhost',
+        port='8889',
+        user='root',
+        password='root',
+        database='shopdb'
+    )
 
-sql =  "DROP TABLE shop"
+conn = connect.cursor()
+
+sql = "DROP TABLE IF EXISTS shop"
 conn.execute(sql)
 
-sql = "DROP TABLE reservation"
+sql = "DROP TABLE IF EXISTS reservation"
 conn.execute(sql)
 
 # テーブルの作成
 
 sql = """
     CREATE TABLE Shop( 
-        id INTEGER PRIMARY KEY,
+        id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
         name VARCHAR(20),
         price INTEGER,
         junre INTEGER,
@@ -28,22 +37,22 @@ conn.execute(sql)
 
 sql = """
     CREATE TABLE Reservation(
-        id INTEGER PRIMARY KEY,
+        id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
         grade INTEGER,
         department INTEGER,
         number INTEGER,
         name VARCHAR(30),
         purchase VARCHAR(100),
         price INTEGER,
-        password VARCHAR(20)
+        password VARCHAR(100)
     );
     """
 
 conn.execute(sql)
-cur = conn.cursor()
+connect.commit()
 
 # データベースを閉じる
-conn.close()
+#conn.close()
 
 
 
