@@ -14,11 +14,11 @@ def db_connect():
 
 
 # shop.dbにデータを登録
-def setDataShop(name, price, junre, stock, reservation):
+def setDataShop(name, price, genre, stock, reservation):
     connect = db_connect()
     cur = connect.cursor()
-    sql = "INSERT INTO Shop (name, price, junre, stock, reservation) VALUES (%s, %s, %s, %s, %s) "
-    cur.execute(sql, (name, price, junre, stock, reservation))
+    sql = "INSERT INTO Shop (name, price, genre, stock, reservation) VALUES (%s, %s, %s, %s, %s) "
+    cur.execute(sql, (name, price, genre, stock, reservation))
     connect.commit()
 
 # reservation.dbにデータを登録

@@ -28,7 +28,7 @@ sql = """
         id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
         name VARCHAR(20),
         price INTEGER,
-        junre INTEGER,
+        genre INTEGER,
         stock INTEGER,
         reservation INTEGER
     );
