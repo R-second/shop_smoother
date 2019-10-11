@@ -30,7 +30,8 @@ sql = """
         price INTEGER,
         genre INTEGER,
         stock INTEGER,
-        reservation INTEGER
+        reservation INTEGER,
+        picPath VARCHAR(70)
     );
     """
 conn.execute(sql)
